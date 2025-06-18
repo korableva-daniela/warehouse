@@ -1,0 +1,1017 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{640E192D-7D6A-4968-B1CC-DEC61D75804C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>sclade</RootNamespace>
+    <AssemblyName>sclade</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=8.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.8.0.5\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.8.0.0\lib\net35\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.6\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.Cryptography, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Cryptography.9.0.6\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.6.0.0\lib\net462\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=9.0.0.6, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.9.0.6\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=9.0.0.6, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.9.0.6\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.5.5.0\lib\net46\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=8.0.6.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.8.0.6\lib\netstandard2.0\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=9.0.0.6, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.9.0.6\lib\net462\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.9.0.6\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Formats.Asn1, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Formats.Asn1.9.0.6\lib\net462\System.Formats.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.6\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Xml, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.9.0.6\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.6\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.6\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.9.0.6\lib\net462\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="access_level.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="access_level.Designer.cs">
+      <DependentUpon>access_level.cs</DependentUpon>
+    </Compile>
+    <Compile Include="access_level_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="access_level_in.Designer.cs">
+      <DependentUpon>access_level_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="address.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="address.Designer.cs">
+      <DependentUpon>address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Address_organization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Address_organization.Designer.cs">
+      <DependentUpon>Address_organization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="batch_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="batch_info.Designer.cs">
+      <DependentUpon>batch_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="batch_in_prod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="batch_in_prod.Designer.cs">
+      <DependentUpon>batch_in_prod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="batch_number.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="batch_number.Designer.cs">
+      <DependentUpon>batch_number.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client.Designer.cs">
+      <DependentUpon>client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_in.Designer.cs">
+      <DependentUpon>client_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_storehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_storehouse.Designer.cs">
+      <DependentUpon>client_storehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="country_of_origin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="country_of_origin.Designer.cs">
+      <DependentUpon>country_of_origin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="country_of_origin_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="country_of_origin_in.Designer.cs">
+      <DependentUpon>country_of_origin_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="database.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="database.Designer.cs">
+      <DependentUpon>database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dates.Designer.cs">
+      <DependentUpon>dates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="department.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="department.Designer.cs">
+      <DependentUpon>department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="department_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="department_in.Designer.cs">
+      <DependentUpon>department_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="division.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="division.Designer.cs">
+      <DependentUpon>division.cs</DependentUpon>
+    </Compile>
+    <Compile Include="division_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="division_in.Designer.cs">
+      <DependentUpon>division_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="egis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="egis.Designer.cs">
+      <DependentUpon>egis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="employee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="employee.Designer.cs">
+      <DependentUpon>employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="excise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="excise.Designer.cs">
+      <DependentUpon>excise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="filter.Designer.cs">
+      <DependentUpon>filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="filter_emp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="filter_emp.Designer.cs">
+      <DependentUpon>filter_emp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="firm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="firm.Designer.cs">
+      <DependentUpon>firm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="firm_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="firm_client.Designer.cs">
+      <DependentUpon>firm_client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="firm_firm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="firm_firm.Designer.cs">
+      <DependentUpon>firm_firm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Firm_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Firm_in.Designer.cs">
+      <DependentUpon>Firm_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="firm_storehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="firm_storehouse.Designer.cs">
+      <DependentUpon>firm_storehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="getting_started.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="getting_started.Designer.cs">
+      <DependentUpon>getting_started.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gtd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gtd.Designer.cs">
+      <DependentUpon>gtd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="invoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="invoices.Designer.cs">
+      <DependentUpon>invoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="invoices_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="invoices_in.Designer.cs">
+      <DependentUpon>invoices_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="invoices_out.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="invoices_out.Designer.cs">
+      <DependentUpon>invoices_out.cs</DependentUpon>
+    </Compile>
+    <Compile Include="job1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="job1.Designer.cs">
+      <DependentUpon>job1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Job_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Job_in.Designer.cs">
+      <DependentUpon>Job_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="log_and_pass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="log_and_pass.Designer.cs">
+      <DependentUpon>log_and_pass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="moving.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="moving.Designer.cs">
+      <DependentUpon>moving.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mov_pro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mov_pro.Designer.cs">
+      <DependentUpon>mov_pro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="navig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="navig.Designer.cs">
+      <DependentUpon>navig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NDS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NDS.Designer.cs">
+      <DependentUpon>NDS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NDS_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NDS_in.Designer.cs">
+      <DependentUpon>NDS_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newaddressinfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newaddressinfo.Designer.cs">
+      <DependentUpon>newaddressinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newaddressinfo_f.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newaddressinfo_f.Designer.cs">
+      <DependentUpon>newaddressinfo_f.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newass.Designer.cs">
+      <DependentUpon>newass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newbatch_number.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newbatch_number.Designer.cs">
+      <DependentUpon>newbatch_number.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newclient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newclient.Designer.cs">
+      <DependentUpon>newclient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newcountry_of_origin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newcountry_of_origin.Designer.cs">
+      <DependentUpon>newcountry_of_origin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newdepat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newdepat.Designer.cs">
+      <DependentUpon>newdepat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newdiv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newdiv.Designer.cs">
+      <DependentUpon>newdiv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newemp.Designer.cs">
+      <DependentUpon>newemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newfirm.Designer.cs">
+      <DependentUpon>newfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newinvoices_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newinvoices_in.Designer.cs">
+      <DependentUpon>newinvoices_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newinvoices_in_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newinvoices_in_info.Designer.cs">
+      <DependentUpon>newinvoices_in_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newinvoices_out.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newinvoices_out.Designer.cs">
+      <DependentUpon>newinvoices_out.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newinvoices_out_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newinvoices_out_info.Designer.cs">
+      <DependentUpon>newinvoices_out_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newjob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newjob.Designer.cs">
+      <DependentUpon>newjob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newjob1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newjob1.Designer.cs">
+      <DependentUpon>newjob1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newmoving.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newmoving.Designer.cs">
+      <DependentUpon>newmoving.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newmoving_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newmoving_info.Designer.cs">
+      <DependentUpon>newmoving_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newNDS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newNDS.Designer.cs">
+      <DependentUpon>newNDS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newProduct.Designer.cs">
+      <DependentUpon>newProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newProduct_card.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newProduct_card.Designer.cs">
+      <DependentUpon>newProduct_card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newstorehouse1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newstorehouse1.Designer.cs">
+      <DependentUpon>newstorehouse1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newType_to.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newType_to.Designer.cs">
+      <DependentUpon>newType_to.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newunit_of_measurement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newunit_of_measurement.Designer.cs">
+      <DependentUpon>newunit_of_measurement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="new_product_accounting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="new_product_accounting.Designer.cs">
+      <DependentUpon>new_product_accounting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="new_product_place.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="new_product_place.Designer.cs">
+      <DependentUpon>new_product_place.cs</DependentUpon>
+    </Compile>
+    <Compile Include="new_product_shipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="new_product_shipment.Designer.cs">
+      <DependentUpon>new_product_shipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="organization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="organization.Designer.cs">
+      <DependentUpon>organization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="per_acc_ass_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="per_acc_ass_1.Designer.cs">
+      <DependentUpon>per_acc_ass_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="per_acc_ass_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="per_acc_ass_2.Designer.cs">
+      <DependentUpon>per_acc_ass_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="per_acc_ass_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="per_acc_ass_3.Designer.cs">
+      <DependentUpon>per_acc_ass_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="per_acc_ass_4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="per_acc_ass_4.Designer.cs">
+      <DependentUpon>per_acc_ass_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="product_accounting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="product_accounting.Designer.cs">
+      <DependentUpon>product_accounting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product_card.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product_card.Designer.cs">
+      <DependentUpon>Product_card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="product_card_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="product_card_in.Designer.cs">
+      <DependentUpon>product_card_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="product_place.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="product_place.Designer.cs">
+      <DependentUpon>product_place.cs</DependentUpon>
+    </Compile>
+    <Compile Include="product_shipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="product_shipment.Designer.cs">
+      <DependentUpon>product_shipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_info.Designer.cs">
+      <DependentUpon>prod_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_in_sclad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_in_sclad.Designer.cs">
+      <DependentUpon>prod_in_sclad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_storehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_storehouse.Designer.cs">
+      <DependentUpon>prod_storehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="rnpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rnpt.Designer.cs">
+      <DependentUpon>rnpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="start.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="start.Designer.cs">
+      <DependentUpon>start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="storehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="storehouse.Designer.cs">
+      <DependentUpon>storehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Type_to.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Type_to.Designer.cs">
+      <DependentUpon>Type_to.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Type_to_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Type_to_in.Designer.cs">
+      <DependentUpon>Type_to_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="unit_of_measurement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="unit_of_measurement.Designer.cs">
+      <DependentUpon>unit_of_measurement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="unit_of_measurement_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="unit_of_measurement_in.Designer.cs">
+      <DependentUpon>unit_of_measurement_in.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="access_level.resx">
+      <DependentUpon>access_level.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="access_level_in.resx">
+      <DependentUpon>access_level_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="address.resx">
+      <DependentUpon>address.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Address_organization.resx">
+      <DependentUpon>Address_organization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="batch_info.resx">
+      <DependentUpon>batch_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="batch_in_prod.resx">
+      <DependentUpon>batch_in_prod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="batch_number.resx">
+      <DependentUpon>batch_number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client.resx">
+      <DependentUpon>client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_in.resx">
+      <DependentUpon>client_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_storehouse.resx">
+      <DependentUpon>client_storehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="country_of_origin.resx">
+      <DependentUpon>country_of_origin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="country_of_origin_in.resx">
+      <DependentUpon>country_of_origin_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="database.resx">
+      <DependentUpon>database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dates.resx">
+      <DependentUpon>dates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="department.resx">
+      <DependentUpon>department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="department_in.resx">
+      <DependentUpon>department_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="division.resx">
+      <DependentUpon>division.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="division_in.resx">
+      <DependentUpon>division_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="egis.resx">
+      <DependentUpon>egis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="employee.resx">
+      <DependentUpon>employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="excise.resx">
+      <DependentUpon>excise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="filter.resx">
+      <DependentUpon>filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="filter_emp.resx">
+      <DependentUpon>filter_emp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="firm.resx">
+      <DependentUpon>firm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="firm_client.resx">
+      <DependentUpon>firm_client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="firm_firm.resx">
+      <DependentUpon>firm_firm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Firm_in.resx">
+      <DependentUpon>Firm_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="firm_storehouse.resx">
+      <DependentUpon>firm_storehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="getting_started.resx">
+      <DependentUpon>getting_started.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gtd.resx">
+      <DependentUpon>gtd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="invoices.resx">
+      <DependentUpon>invoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="invoices_in.resx">
+      <DependentUpon>invoices_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="invoices_out.resx">
+      <DependentUpon>invoices_out.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="job1.resx">
+      <DependentUpon>job1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Job_in.resx">
+      <DependentUpon>Job_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="log_and_pass.resx">
+      <DependentUpon>log_and_pass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="moving.resx">
+      <DependentUpon>moving.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mov_pro.resx">
+      <DependentUpon>mov_pro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="navig.resx">
+      <DependentUpon>navig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NDS.resx">
+      <DependentUpon>NDS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NDS_in.resx">
+      <DependentUpon>NDS_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newaddressinfo.resx">
+      <DependentUpon>newaddressinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newaddressinfo_f.resx">
+      <DependentUpon>newaddressinfo_f.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newass.resx">
+      <DependentUpon>newass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newbatch_number.resx">
+      <DependentUpon>newbatch_number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newclient.resx">
+      <DependentUpon>newclient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newcountry_of_origin.resx">
+      <DependentUpon>newcountry_of_origin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newdepat.resx">
+      <DependentUpon>newdepat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newdiv.resx">
+      <DependentUpon>newdiv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newemp.resx">
+      <DependentUpon>newemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newfirm.resx">
+      <DependentUpon>newfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newinvoices_in.resx">
+      <DependentUpon>newinvoices_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newinvoices_in_info.resx">
+      <DependentUpon>newinvoices_in_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newinvoices_out.resx">
+      <DependentUpon>newinvoices_out.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newinvoices_out_info.resx">
+      <DependentUpon>newinvoices_out_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newjob.resx">
+      <DependentUpon>newjob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newjob1.resx">
+      <DependentUpon>newjob1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newmoving.resx">
+      <DependentUpon>newmoving.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newmoving_info.resx">
+      <DependentUpon>newmoving_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newNDS.resx">
+      <DependentUpon>newNDS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newProduct.resx">
+      <DependentUpon>newProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newProduct_card.resx">
+      <DependentUpon>newProduct_card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newstorehouse1.resx">
+      <DependentUpon>newstorehouse1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newType_to.resx">
+      <DependentUpon>newType_to.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newunit_of_measurement.resx">
+      <DependentUpon>newunit_of_measurement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="new_product_accounting.resx">
+      <DependentUpon>new_product_accounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="new_product_place.resx">
+      <DependentUpon>new_product_place.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="new_product_shipment.resx">
+      <DependentUpon>new_product_shipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="organization.resx">
+      <DependentUpon>organization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="per_acc_ass_1.resx">
+      <DependentUpon>per_acc_ass_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="per_acc_ass_2.resx">
+      <DependentUpon>per_acc_ass_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="per_acc_ass_3.resx">
+      <DependentUpon>per_acc_ass_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="per_acc_ass_4.resx">
+      <DependentUpon>per_acc_ass_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="product_accounting.resx">
+      <DependentUpon>product_accounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product_card.resx">
+      <DependentUpon>Product_card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="product_card_in.resx">
+      <DependentUpon>product_card_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="product_place.resx">
+      <DependentUpon>product_place.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="product_shipment.resx">
+      <DependentUpon>product_shipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_info.resx">
+      <DependentUpon>prod_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_in_sclad.resx">
+      <DependentUpon>prod_in_sclad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_storehouse.resx">
+      <DependentUpon>prod_storehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rnpt.resx">
+      <DependentUpon>rnpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="start.resx">
+      <DependentUpon>start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="storehouse.resx">
+      <DependentUpon>storehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Type_to.resx">
+      <DependentUpon>Type_to.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Type_to_in.resx">
+      <DependentUpon>Type_to_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="unit_of_measurement.resx">
+      <DependentUpon>unit_of_measurement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="unit_of_measurement_in.resx">
+      <DependentUpon>unit_of_measurement_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\MX-5.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\TORG-13.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\TORG-13_.doc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\The_eye_is_closed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\The_eye_is_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TORG-12.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Untitled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TORG-12.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+  </Target>
+</Project>
