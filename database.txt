@@ -1,0 +1,1235 @@
+Create table Division 
+(id SERIAL primary key,
+ 
+ name varchar(255),
+ date_open date,
+country_d varchar(255),
+ city_d varchar(255),
+ street_d varchar(255),
+ house_d varchar(255),
+ post_in_d  varchar(255)  
+ 
+ );
+Create table country_of_origin
+(id SERIAL primary key,
+ code varchar(255),
+ name varchar(255),
+ litter varchar(255)
+);
+INSERT INTO country_of_origin (code, name, litter) VALUES
+('040', 'Абхазия', 'AB'),
+('008', 'Албания', 'AL'),
+('012', 'Алжир', 'DZ'),
+('016', 'Американское Самоа', 'AS'),
+('020', 'Андорра', 'AD'),
+('024', 'Ангола', 'AO'),
+('028', 'Антигуа и Барбуда', 'AG'),
+('032', 'Аргентина', 'AR'),
+('051', 'Армения', 'AM'),
+('036', 'Австралия', 'AU'),
+('040', 'Австрия', 'AT'),
+('031', 'Азербайджан', 'AZ'),
+('044', 'Багамы', 'BS'),
+('048', 'Бахрейн', 'BH'),
+('050', 'Бангладеш', 'BD'),
+('052', 'Барбадос', 'BB'),
+('112', 'Беларусь', 'BY'),
+('056', 'Бельгия', 'BE'),
+('084', 'Белиз', 'BZ'),
+('204', 'Бенин', 'BJ'),
+('064', 'Бутан', 'BT'),
+('068', 'Боливия', 'BO'),
+('070', 'Босния и Герцеговина', 'BA'),
+('072', 'Ботсвана', 'BW'),
+('076', 'Бразилия', 'BR'),
+('096', 'Бруней', 'BN'),
+('100', 'Болгария', 'BG'),
+('854', 'Буркина-Фасо', 'BF'),
+('108', 'Бурунди', 'BI'),
+('132', 'Кабо-Верде', 'CV'),
+('116', 'Камбоджа', 'KH'),
+('120', 'Камерун', 'CM'),
+('124', 'Канада', 'CA'),
+('136', 'Каймановы Острова', 'KY'),
+('140', 'Центральноафриканская Республика', 'CF'),
+('148', 'Чад', 'TD'),
+('152', 'Чили', 'CL'),
+('156', 'Китай', 'CN'),
+('170', 'Колумбия', 'CO'),
+('174', 'Коморы', 'KM'),
+('180', 'Конго, Демократическая Республика', 'CD'),
+('178', 'Конго, Республика', 'CG'),
+('188', 'Коста-Рика', 'CR'),
+('191', 'Хорватия', 'HR'),
+('192', 'Куба', 'CU'),
+('196', 'Кипр', 'CY'),
+('203', 'Чехия', 'CZ'),
+('208', 'Дания', 'DK'),
+('262', 'Джибути', 'DJ'),
+('214', 'Доминика', 'DM'),
+('214', 'Доминиканская Республика', 'DO'),
+('218', 'Эквадор', 'EC'),
+('818', 'Египет', 'EG'),
+('222', 'Сальвадор', 'SV'),
+('226', 'Экваториальная Гвинея', 'GQ'),
+('232', 'Эритрея', 'ER'),
+('233', 'Эстония', 'EE'),
+('748', 'Эсватини', 'SZ'),
+('231', 'Эфиопия', 'ET'),
+('643', 'Россия', 'RU'),
+('410', 'Фиджи', 'FJ'),
+('242', 'Филиппины', 'PH'),
+('586', 'Южноафриканская Республика', 'ZA'),
+('600', 'Япония', 'JP'),
+('840', 'Соединенные Штаты Америки', 'US'),
+('250', 'Франция', 'FR'),
+('428', 'Шри-Ланка', 'LK'),
+('752', 'Швеция', 'SE'),
+('756', 'Швейцария', 'CH'),
+('760', 'Эквадор', 'EC'),
+('764', 'Тайланд', 'TH'),
+('788', 'Уругвай', 'UY'),
+('792', 'Венесуэла', 'VE'),
+('795', 'Мексика', 'MX'),
+('804', 'Италия', 'IT'),
+('818', 'Египет', 'EG'),
+('840', 'США', 'US'),
+('862', 'Куба', 'CU'),
+('887', 'Вьетнам', 'VN');
+
+Create table access_level
+(id SERIAL primary key,
+ name varchar(255),
+ description text
+);
+Insert into access_level (name, description ) values ('admin','Высокий уровень доступа, который позволяет управлять пользователями, настраивать систему и иметь полный доступ ко всем функциям программы.');
+Insert into access_level (name, description ) values ('Warehouse Operator','уровень доступа, позволяющий выполнять основные операции, такие как прием, выдача и перемещение товаров.');
+Insert into access_level (name, description ) values ('Warehouse Manager',' уровень, который предоставляет возможность управлять запасами, отслеживать поступления и отгрузки, а также вести учет товара.');
+Insert into access_level (name, description ) values ('HR Specialist','доступ к управлению данными сотрудников, включая набор, увольнение, ведение личных дел и организацию обучения.');
+
+Create table Employee
+(id SERIAL primary key,
+ name varchar(255),
+ phone varchar(20),
+ mail  varchar(255),
+ birthday date,
+ login varchar(255),
+ passw  BYTEA,
+ date_of_accept date,
+  salt BYTEA,
+status varchar(255)
+);
+
+Create table Department
+(id SERIAL primary key,
+ name varchar(255),
+ description text
+ 
+ 
+);
+Create table Job
+(id SERIAL primary key,
+ name varchar(255),
+ description text
+ 
+);
+
+Create table Job_em
+(id SERIAL primary key,
+ id_em integer references Employee  (id),
+ id_j integer references Job  (id),
+ id_dep integer references Department (id),
+ id_d  integer references Division  (id),
+ id_a  integer references access_level  (id),
+
+ date_of_appointment date,
+ sal integer
+);
+
+ Create table Firm 
+(id SERIAL primary key,
+ name_f varchar(255),
+ phone_f varchar(20),
+ view_ varchar(255),
+ country_of_registration integer references country_of_origin(id),
+ INN varchar(255),
+ KPP varchar(255),
+ OGRN varchar(255),
+ pc varchar(255),
+ bank varchar(255),
+ bik varchar(255)
+ 
+);
+Create table Address_f 
+(id SERIAL primary key,
+ id_f integer references Firm (id),
+ country_f varchar(255),
+ city_f varchar(255),
+ street_f varchar(255),
+ house_f varchar(255),
+ post_in_f  varchar(255)  
+ 
+);
+
+ Create table organization 
+(id SERIAL primary key,
+ name_f varchar(255),
+ phone_f varchar(20),
+ view_ varchar(255),
+ country_of_registration integer references country_of_origin(id),
+ INN varchar(255),
+ KPP varchar(255),
+ OGRN varchar(255),
+ pc varchar(255),
+ bank varchar(255),
+ bik varchar(255)
+ 
+);
+Create table Address_organization 
+(id SERIAL primary key,
+ id_f integer references Firm (id),
+ country_f varchar(255),
+ city_f varchar(255),
+ street_f varchar(255),
+ house_f varchar(255),
+ post_in_f  varchar(255)  
+ 
+);
+
+Create table Type_to
+(id SERIAL primary key,
+ name varchar(255),
+ description text
+ 
+ 
+);
+
+
+
+Create table NDS
+(id SERIAL primary key,
+ percent integer,
+ description text
+);
+
+Insert into NDS (percent, description ) values 
+(0,'Применяется к экспортируемым товарам, международным перевозкам, а также к некоторым услугам, связанным с международной деятельностью.
+Применяется к товарам, поставляемым для нужд государственных и муниципальных учреждений.'),
+(10,'Применяется к определенным товарам и услугам, включая:
+Продукты питания (включая детское питание).
+Лекарственные средства и медицинские изделия.
+Газеты и журналы (периодические издания).
+Услуги по предоставлению жилья (например, гостиницы).'),
+(20,'Это основная ставка НДС, применяемая ко всем остальным товарам и услугам, которые не подпадают под нулевую или пониженную ставку.
+Применяется к большинству товаров, услуг и работ, включая:
+Промышленные товары.
+Услуги связи.
+Услуги в сфере образования (не относящиеся к льготам).
+Строительные работы и услуги.'),
+(15,'Применяется к определенным видам услуг, связанным с реализацией товаров и услуг в рамках специальных режимов налогообложения, таких как упрощенная система налогообложения.');
+Create table unit_of_measurement
+(id SERIAL primary key,
+ code varchar(255),
+ name varchar(255),
+ litter varchar(255)
+);
+INSERT INTO unit_of_measurement (code, name, litter) VALUES
+('166', 'КИЛОГРАММ', 'КГ'),
+('163', 'ГРАММ', 'Г'),
+('168', 'ТОННА', 'Т'),
+('006', 'МЕТР', 'М'),
+('004', 'САНТИМЕТР', 'СМ'),
+('003', 'МИЛЛИМЕТР', 'ММ'),
+('112', 'ЛИТР', 'Л'),
+('111', 'МИЛЛИЛИТР', 'МЛ'),
+('796', 'ШТУКА', 'ШТ'),
+('778', 'УПАКОВКА', 'УП'),
+('715', 'ПАРА', 'ПАРА'),
+('839', 'КОМПЛЕКТ', 'КОМП'),
+('055', 'КВАДРАТНЫЙ МЕТР', 'М2'),
+('113', 'КУБИЧЕСКИЙ МЕТР', 'М3'),
+('050', 'КВАДРАТНЫЙ МИЛЛИМЕТР', 'ММ2'),
+('110', 'КУБИЧЕСКИЙ МИЛЛИМЕТР', 'ММ3'),
+('051', 'КВАДРАТНЫЙ САНТИМЕТР', 'СМ2'),
+('111', 'КУБИЧЕСКИЙ САНТИМЕТР', 'СМ3'),
+('018', 'ПОГОННЫЙ МЕТР', 'ПОГ М'),
+('041', 'ФУТ', 'ФУТ'),
+('039', 'ДЮЙМ', 'ДЮЙМ'),
+('112', 'ГЕКТОЛИТР', 'ГЛ'),
+('8751', 'КОРОБКА', 'КОР'),
+('728', 'ПАЧКА', 'ПАЧ'),
+('889', 'УСЛОВНЯ КАТУШКА', 'КАТ'),
+('736', 'РУЛОН', 'РУЛ'),
+('879', 'ФЛАКОН', 'ФЛК'),
+('812', 'Ящик', 'ЯЩ'),
+('840', 'СЕКЦИЯ', 'СЕКЦ'),
+('868', 'БУТЫЛКА', 'БУТ');
+
+Create table Product_card
+(id SERIAL primary key,
+
+ code  varchar(255),
+ id_ed integer references unit_of_measurement (id),
+ 
+ id_coun  integer references country_of_origin  (id),
+ numgtd varchar(255),
+ numrnpt varchar(255),
+ id_nds  integer references NDS  (id),
+col_pro integer,
+ code_firm_pro  varchar(255),
+ price_firm_pro DOUBLE PRECISION,
+ numexcise  varchar(255),
+ numegis  varchar(255),
+ name_firm varchar(255),
+ name varchar(255),
+ description text,
+ id_type integer references Type_to(id)
+
+);
+Create table batch_number
+(id SERIAL primary key,
+ id_pro_card integer references Product_card  (id),
+id_ed integer references unit_of_measurement (id),
+ number  varchar(255),
+ release timestamp,
+ last_expiration timestamp,
+ warranty varchar(255),
+ col_pro integer,
+ price DOUBLE PRECISION,
+ id_Firm  integer references Firm (id)
+
+);
+Create table storehouse 
+(id SERIAL primary key,
+ id_div integer references Division   (id),
+ name varchar(255),
+country_d varchar(255),
+ city_d varchar(255),
+ street_d varchar(255),
+ house_d varchar(255),
+ post_in_d  varchar(255)  
+ 
+ );
+Create table client_storehouse 
+(id SERIAL primary key,
+ id_storehouse integer references storehouse   (id),
+ id_Firm integer references Firm   (id)
+
+ );
+Create table firm_storehouse 
+(id SERIAL primary key,
+ id_storehouse integer references storehouse   (id),
+ id_Firm integer references Firm   (id)
+
+ );
+Create table prod_storehouse 
+(id SERIAL primary key,
+ id_store integer references storehouse (id),
+ num_place varchar(255)
+
+);
+ Create table prod_storehouse_info 
+(id SERIAL primary key,
+ id_prod_storehouse integer references prod_storehouse  (id),
+ id_batch_number integer references batch_number  (id),
+ id_product_card integer references Product_card  (id),
+ date_add timestamp,
+ count integer,
+ 
+id_Employee  integer references Employee (id)
+ );
+Create table prod_store
+(id SERIAL primary key,
+ id_store integer references storehouse (id),
+ id_product_card integer references Product_card  (id),
+ id_batch_number integer references batch_number (id),
+ count_id_batch integer,
+ count integer
+ );
+ALTER TABLE prod_store
+ADD CONSTRAINT unique_store_product UNIQUE (id_store, id_product_card,id_batch_number);
+
+
+Create table invoices_in
+(id SERIAL primary key,
+ num_invoices varchar(255),
+ id_Firm  integer references Firm (id),
+ id_storehouse integer references storehouse (id),
+ data timestamp,
+ num_Contract varchar(255),
+ total_sum DOUBLE PRECISION,
+ total_sum_nds DOUBLE PRECISION,
+ shipment date,
+ status varchar(100),
+ id_Employee  integer references Employee (id),
+ flag integer,
+ Address_f  integer references Address_f (id)
+ );
+CREATE TABLE invoices_in_info
+(
+	id SERIAL Primary key,
+	invoices_in integer references invoices_in (id) ,
+	id_Product_card integer references Product_card (id),
+        id_batch_number integer references batch_number (id),
+	quantity integer,
+	price DOUBLE PRECISION,
+        price_nds DOUBLE PRECISION,
+        count integer
+
+);
+Create table moving
+(id SERIAL primary key,
+ num_invoices varchar(255),
+ id_storehouse_1  integer references storehouse (id),
+ id_storehouse_2 integer references storehouse (id),
+ data timestamp,
+ num_Contract varchar(255),
+ shipment date,
+ shipment_to date,
+ status varchar(100),
+ id_Employee  integer references Employee (id)
+ );
+CREATE TABLE moving_info
+(
+	id SERIAL Primary key,
+	invoices_in integer references invoices_in (id) ,
+	id_Product_card integer references Product_card (id),
+        id_batch_number integer references batch_number (id),
+	quantity integer,
+        count integer
+	
+);
+
+
+
+
+
+
+
+CREATE OR REPLACE FUNCTION update_or_insert_prod_storehouse_info()
+RETURNS TRIGGER AS $$
+BEGIN
+    
+    IF EXISTS (
+        SELECT 1
+        FROM prod_storehouse_info
+        WHERE id_prod_storehouse = NEW.id_prod_storehouse
+          AND id_batch_number = NEW.id_batch_number
+          AND id_product_card = NEW.id_product_card
+    ) THEN
+        -- Увеличиваем count на значение, указанное в NEW.count
+        UPDATE prod_storehouse_info
+        SET count = count + NEW.count
+        WHERE id_prod_storehouse = NEW.id_prod_storehouse
+          AND id_batch_number = NEW.id_batch_number
+          AND id_product_card = NEW.id_product_card;
+       
+        RETURN NULL;
+    ELSE
+   
+        RETURN NEW;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_update_or_insert_prod_storehouse_info
+BEFORE INSERT ON prod_storehouse_info
+FOR EACH ROW
+EXECUTE FUNCTION update_or_insert_prod_storehouse_info();
+-------------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION
+insert_invoices_in_info() RETURNS
+TRIGGER AS $ad_ff$
+BEGIN
+	UPDATE invoices_in SET total_sum = total_sum + NEW.quantity*NEW.price, total_sum_nds = total_sum_nds + NEW.quantity*NEW.price_nds
+	WHERE invoices_in.id = NEW.invoices_in;
+	RETURN NULL;
+END
+$ad_ff$LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION
+delete_invoices_in_info() RETURNS
+TRIGGER AS $del_ff$
+BEGIN
+	UPDATE invoices_in SET total_sum = total_sum - OLD.quantity*OLD.price, total_sum_nds = total_sum_nds - OLD.quantity*OLD.price_nds
+	WHERE invoices_in.id = OLD.invoices_in;
+	RETURN NULL;
+END
+$del_ff$LANGUAGE plpgsql;
+
+
+CREATE TRIGGER insert_invoices_in_info_after 
+AFTER INSERT ON invoices_in_info
+FOR EACH ROW 
+EXECUTE PROCEDURE insert_invoices_in_info();
+-----------------------------------------------------------------------------------------
+
+	
+CREATE TRIGGER delete_invoices_in_info_after  
+AFTER DELETE ON invoices_in_info
+FOR EACH ROW 
+EXECUTE PROCEDURE delete_invoices_in_info();
+
+CREATE OR REPLACE FUNCTION
+update_invoices_in_info() RETURNS
+TRIGGER AS $upd_ff$
+BEGIN
+	UPDATE invoices_in SET total_sum = total_sum + NEW.quantity*NEW.price-OLD.quantity*OLD.price,total_sum_nds = total_sum_nds + NEW.quantity*NEW.price_nds-OLD.quantity*OLD.price_nds
+	WHERE invoices_in.id = NEW.invoices_in;
+	RETURN NULL;
+END
+$upd_ff$LANGUAGE plpgsql;
+
+
+	
+CREATE TRIGGER update_invoices_in_info_after 
+AFTER update on invoices_in_info
+FOR EACH ROW
+EXECUTE PROCEDURE update_invoices_in_info();
+------------------------------------------------------------------------
+
+
+CREATE OR REPLACE FUNCTION insert_batch_number_based_on_flag()
+RETURNS TRIGGER AS $$
+DECLARE
+    flag_value INTEGER;
+BEGIN
+ 
+    SELECT flag INTO flag_value FROM invoices_in WHERE id = NEW.invoices_in;
+
+ 
+    IF flag_value = 0 THEN
+        UPDATE batch_number 
+        SET col_pro = col_pro + NEW.quantity
+        WHERE batch_number.id = NEW.id_batch_number;
+    ELSIF flag_value = 1 THEN
+        UPDATE batch_number 
+        SET col_pro = col_pro - NEW.quantity
+        WHERE batch_number.id = NEW.id_batch_number;
+    END IF;
+
+    RETURN NULL;  
+END
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_insert_batch_number
+AFTER INSERT ON invoices_in_info
+FOR EACH ROW
+EXECUTE FUNCTION insert_batch_number_based_on_flag();
+----------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION update_batch_number_based_on_flag()
+RETURNS TRIGGER AS $$
+DECLARE
+    flag_value INTEGER;
+BEGIN
+  
+    SELECT flag INTO flag_value FROM invoices_in WHERE id = NEW.invoices_in;
+
+  
+    IF flag_value = 0 THEN
+        UPDATE batch_number 
+        SET col_pro = col_pro + NEW.quantity-OLD.quantity
+        WHERE batch_number.id = NEW.id_batch_number;
+    ELSIF flag_value = 1 THEN
+        UPDATE batch_number 
+        SET col_pro = col_pro - NEW.quantity+OLD.quantity
+        WHERE batch_number.id = NEW.id_batch_number;
+    END IF;
+
+    RETURN NULL;  
+END
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER trg_update_batch_number
+AFTER update on invoices_in_info
+FOR EACH ROW
+EXECUTE FUNCTION update_batch_number_based_on_flag();
+-----------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION delete_batch_number_based_on_flag()
+RETURNS TRIGGER AS $$
+DECLARE
+    flag_value INTEGER;
+BEGIN
+
+    SELECT flag INTO flag_value FROM invoices_in WHERE id = NEW.invoices_in;
+
+    IF flag_value = 0 THEN
+        UPDATE batch_number 
+        SET col_pro = col_pro - OLD.quantity
+        WHERE batch_number.id = NEW.id_batch_number;
+    ELSIF flag_value = 1 THEN
+        UPDATE batch_number 
+        SET col_pro = col_pro + OLD.quantity
+        WHERE batch_number.id = NEW.id_batch_number;
+    END IF;
+
+    RETURN NULL; 
+END
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER trg_delete_batch_number
+AFTER DELETE ON invoices_in_info
+FOR EACH ROW
+EXECUTE FUNCTION delete_batch_number_based_on_flag();
+-----------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION update_prod_store()
+RETURNS TRIGGER AS $$
+DECLARE
+    store_id INTEGER;
+    product_id INTEGER;
+    batch_id INTEGER;
+    quantity INTEGER;
+    current_count INTEGER;
+    current_batch_count INTEGER;
+    flag_id INTEGER;
+BEGIN
+ 
+    SELECT id_storehouse INTO store_id
+    FROM invoices_in
+    WHERE id = NEW.invoices_in;
+
+    SELECT flag INTO flag_id
+    FROM invoices_in
+    WHERE id = NEW.invoices_in;
+
+
+   
+    product_id := NEW.id_Product_card;
+    batch_id := NEW.id_batch_number;
+    quantity := NEW.quantity;
+
+
+    SELECT count INTO current_count
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id
+    LIMIT 1;
+
+ 
+    SELECT count_id_batch INTO current_batch_count
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id
+    LIMIT 1;
+
+  
+    IF flag_id = 0 THEN
+ 
+        IF current_count IS NOT NULL THEN
+    
+            UPDATE prod_store
+            SET count = current_count + quantity
+            WHERE id_store = store_id AND id_product_card = product_id;
+
+            IF current_batch_count IS NOT NULL THEN
+           
+                UPDATE prod_store
+                SET count_id_batch = current_batch_count + NEW.quantity
+                WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id;
+            ELSE
+          
+                INSERT INTO prod_store (id_store, id_product_card, id_batch_number, count_id_batch, count)
+                VALUES (store_id, product_id, batch_id, quantity, current_count + quantity); 
+            END IF;
+        ELSE
+          
+            INSERT INTO prod_store (id_store, id_product_card, id_batch_number, count_id_batch, count)
+            VALUES (store_id, product_id, batch_id, quantity, quantity);
+        END IF;
+
+    ELSIF flag_id = 1 THEN
+   
+        IF current_count IS NOT NULL THEN
+          
+            UPDATE prod_store
+            SET count = current_count - quantity
+            WHERE id_store = store_id AND id_product_card = product_id;
+
+            IF current_batch_count IS NOT NULL THEN
+               
+                UPDATE prod_store
+                SET count_id_batch = current_batch_count - NEW.quantity
+                WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id;
+          END IF;
+    END IF;
+ END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER trg_update_prod_store
+AFTER INSERT ON invoices_in_info
+FOR EACH ROW
+EXECUTE FUNCTION update_prod_store();
+---------------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION update_update_prod_store()
+RETURNS TRIGGER AS $$
+DECLARE
+    store_id INTEGER;
+    product_id INTEGER;
+    batch_id INTEGER;
+      new_quantity INTEGER;
+ old_quantity INTEGER;
+    current_count INTEGER;
+    current_batch_count INTEGER;
+    flag_id INTEGER;
+BEGIN
+    
+    SELECT id_storehouse INTO store_id
+    FROM invoices_in
+    WHERE id = NEW.invoices_in;
+
+    SELECT flag INTO flag_id
+    FROM invoices_in
+    WHERE id = NEW.invoices_in;
+
+
+    product_id := NEW.id_Product_card;
+    batch_id := NEW.id_batch_number;
+    new_quantity := NEW.quantity;
+    old_quantity := OLD.quantity;
+
+    SELECT count INTO current_count
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id
+    LIMIT 1;
+
+    SELECT count_id_batch INTO current_batch_count
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id
+    LIMIT 1;
+
+  
+    IF flag_id = 0 THEN
+  
+        IF current_count IS NOT NULL THEN
+        
+            UPDATE prod_store
+            SET count = current_count - old_quantity + new_quantity
+            WHERE id_store = store_id AND id_product_card = product_id;
+
+            IF current_batch_count IS NOT NULL THEN
+               
+                UPDATE prod_store
+                SET count_id_batch =  current_batch_count - old_quantity + new_quantity
+                WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id;
+            ELSE
+        
+                INSERT INTO prod_store (id_store, id_product_card, id_batch_number, count_id_batch, count)
+                VALUES (store_id, product_id, batch_id, quantity, current_count + quantity); 
+            END IF;
+        ELSE
+       
+            INSERT INTO prod_store (id_store, id_product_card, id_batch_number, count_id_batch, count)
+            VALUES (store_id, product_id, batch_id, quantity, quantity);
+        END IF;
+
+    ELSIF flag_id = 1 THEN
+     
+        IF current_count IS NOT NULL THEN
+          
+            UPDATE prod_store
+            SET count = current_count + old_quantity - new_quantity
+            WHERE id_store = store_id AND id_product_card = product_id;
+
+            IF current_batch_count IS NOT NULL THEN
+       
+                UPDATE prod_store
+                SET count_id_batch =  current_batch_count + old_quantity - new_quantity
+                WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id;
+   
+             
+            END IF;
+            END IF;
+        END IF;
+
+ RETURN NEW;
+    
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER trg_update_update_prod_store
+AFTER UPDATE ON invoices_in_info
+FOR EACH ROW
+EXECUTE FUNCTION update_update_prod_store();
+
+----------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION delete_prod_store()
+RETURNS TRIGGER AS $$
+DECLARE
+    store_id INTEGER;
+    product_id INTEGER;
+    batch_id INTEGER;
+     
+ old_quantity INTEGER;
+    current_count INTEGER;
+    current_batch_count INTEGER;
+    flag_id INTEGER;
+BEGIN
+ 
+    SELECT id_storehouse INTO store_id
+    FROM invoices_in
+    WHERE id = NEW.invoices_in;
+
+    SELECT flag INTO flag_id
+    FROM invoices_in
+    WHERE id = OLD.invoices_in;
+
+
+
+    product_id := NEW.id_Product_card;
+    batch_id := NEW.id_batch_number;
+ 
+    old_quantity := OLD.quantity;
+
+   
+    SELECT count INTO current_count
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id
+    LIMIT 1;
+
+
+    SELECT count_id_batch INTO current_batch_count
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id
+    LIMIT 1;
+
+  
+    IF flag_id = 0 THEN
+     
+        IF current_count IS NOT NULL THEN
+         
+            UPDATE prod_store
+            SET count = current_count - old_quantity
+            WHERE id_store = store_id AND id_product_card = product_id;
+
+            IF current_batch_count IS NOT NULL THEN
+           
+                UPDATE prod_store
+                SET count_id_batch =  current_batch_count - old_quantity
+                WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id;
+            
+            
+            END IF;
+        
+        END IF;
+
+    ELSIF flag_id = 1 THEN
+     
+        IF current_count IS NOT NULL THEN
+       
+            UPDATE prod_store
+            SET count = current_count + old_quantity - new_quantity
+            WHERE id_store = store_id AND id_product_card = product_id;
+
+            IF current_batch_count IS NOT NULL THEN
+            
+                UPDATE prod_store
+                SET count_id_batch =  current_batch_count + old_quantity - new_quantity
+                WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id;
+          
+        END IF;
+    END IF;
+  END IF;
+     RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER trg_delete_prod_store
+AFTER DELETE ON invoices_in_info
+FOR EACH ROW
+EXECUTE FUNCTION delete_prod_store();
+
+--------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION update_invoice_status()
+RETURNS TRIGGER AS $$
+DECLARE
+    total_count INTEGER;
+    total_quantity INTEGER;
+BEGIN
+ 
+    SELECT SUM(count) INTO total_count
+    FROM invoices_in_info
+    WHERE invoices_in = NEW.invoices_in;
+
+    -- Суммируем поле quantity для всех записей с тем же invoices_in
+    SELECT SUM(quantity) INTO total_quantity
+    FROM invoices_in_info
+    WHERE invoices_in = NEW.invoices_in;
+
+
+    IF total_count = total_quantity THEN
+        UPDATE invoices_in
+        SET status = 'Обработан'
+        WHERE id = NEW.invoices_in;
+    
+    
+    ELSIF total_count > 0 THEN
+        UPDATE invoices_in
+        SET status = 'В обработке'
+        WHERE id = NEW.invoices_in;
+    END IF;
+
+    RETURN NEW; 
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER invoices_in_info_update
+AFTER UPDATE ON invoices_in_info
+FOR EACH ROW
+EXECUTE FUNCTION update_invoice_status();
+
+
+
+
+CREATE OR REPLACE FUNCTION update_moving_status()
+RETURNS TRIGGER AS $$
+DECLARE
+    total_count INTEGER;
+    total_quantity INTEGER;
+BEGIN
+ 
+    SELECT SUM(count) INTO total_count
+    FROM moving_info
+    WHERE invoices_in = NEW.invoices_in;
+
+  
+    SELECT SUM(quantity) INTO total_quantity
+    FROM moving_info
+    WHERE invoices_in = NEW.invoices_in;
+
+   
+    IF total_count = total_quantity THEN
+        UPDATE moving
+        SET status = 'Обработан'
+        WHERE id = NEW.invoices_in;
+    
+  
+    ELSIF total_count > 0 THEN
+        UPDATE moving
+        SET status = 'В обработке'
+        WHERE id = NEW.invoices_in;
+    END IF;
+
+    RETURN NEW; 
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER moving_info_update
+AFTER UPDATE ON moving_info
+FOR EACH ROW
+EXECUTE FUNCTION update_moving_status();
+------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION insert_prod_store_moving()
+RETURNS TRIGGER AS $$
+DECLARE
+    store_id INTEGER;
+    store_id_to INTEGER;
+    product_id INTEGER;
+    batch_id INTEGER;
+    quantity INTEGER;
+    current_count_ INTEGER;
+    current_batch_count_ INTEGER;
+    current_count INTEGER;
+    current_batch_count INTEGER;
+BEGIN
+    
+    SELECT id_storehouse_1 INTO store_id
+    FROM moving
+    WHERE id = NEW.invoices_in;
+
+  
+    SELECT id_storehouse_2 INTO store_id_to
+    FROM moving
+    WHERE id = NEW.invoices_in;
+
+  
+    product_id := NEW.id_Product_card;
+    batch_id := NEW.id_batch_number;
+    quantity := NEW.quantity;
+
+
+    SELECT count INTO current_count
+    FROM prod_store
+    WHERE id_store = store_id_to AND id_product_card = product_id
+    LIMIT 1;
+
+    SELECT count_id_batch INTO current_batch_count
+    FROM prod_store
+    WHERE id_store = store_id_to AND id_product_card = product_id AND id_batch_number = batch_id
+    LIMIT 1;
+
+    SELECT count INTO current_count_
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id
+    LIMIT 1;
+
+   
+    SELECT count_id_batch INTO current_batch_count_
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id
+    LIMIT 1;
+        IF current_count IS NOT NULL THEN
+       
+            UPDATE prod_store
+            SET count = current_count + quantity
+            WHERE id_store = store_id_to AND id_product_card = product_id;
+
+            IF current_batch_count IS NOT NULL THEN
+           
+                UPDATE prod_store
+                SET count_id_batch = current_batch_count + NEW.quantity
+                WHERE id_store = store_id_to AND id_product_card = product_id AND id_batch_number = batch_id;
+            ELSE
+              
+                INSERT INTO prod_store (id_store, id_product_card, id_batch_number, count_id_batch, count)
+                VALUES (store_id_to, product_id, batch_id, quantity, current_count + quantity);
+            END IF;
+        ELSE
+           
+            INSERT INTO prod_store (id_store, id_product_card, id_batch_number, count_id_batch, count)
+            VALUES (store_id_to, product_id, batch_id, quantity, quantity);
+        END IF;
+
+    
+         IF current_count_ IS NOT NULL THEN
+          
+            UPDATE prod_store
+            SET count = current_count_ - quantity
+            WHERE id_store = store_id AND id_product_card = product_id;
+
+            IF current_batch_count_ IS NOT NULL THEN
+                
+                UPDATE prod_store
+                SET count_id_batch = current_batch_count_ - NEW.quantity
+                WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id;
+
+            
+            END IF;
+        END IF;
+ 
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_insert_prod_store_moving
+AFTER INSERT ON moving_info
+FOR EACH ROW
+EXECUTE FUNCTION insert_prod_store_moving();
+---------------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION update_prod_store_moving()
+RETURNS TRIGGER AS $$
+DECLARE
+    store_id INTEGER;
+ store_id_to INTEGER;
+    product_id INTEGER;
+
+    batch_id INTEGER;
+      new_quantity INTEGER;
+ old_quantity INTEGER;
+    current_count_ INTEGER;
+    current_batch_count_ INTEGER;
+    current_count INTEGER;
+    current_batch_count INTEGER;
+BEGIN
+    
+    SELECT id_storehouse_1 INTO store_id
+    FROM moving
+    WHERE id = NEW.invoices_in;
+
+  
+    SELECT id_storehouse_2 INTO store_id_to
+    FROM moving
+    WHERE id = NEW.invoices_in;
+
+
+    product_id := NEW.id_Product_card;
+    batch_id := NEW.id_batch_number;
+    new_quantity := NEW.quantity;
+    old_quantity := OLD.quantity;
+
+
+    SELECT count INTO current_count
+    FROM prod_store
+    WHERE id_store = store_id_to AND id_product_card = product_id
+    LIMIT 1;
+
+  
+    SELECT count_id_batch INTO current_batch_count
+    FROM prod_store
+    WHERE id_store = store_id_to AND id_product_card = product_id AND id_batch_number = batch_id
+    LIMIT 1;
+
+    SELECT count INTO current_count_
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id
+    LIMIT 1;
+
+  
+    SELECT count_id_batch INTO current_batch_count_
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id
+    LIMIT 1;
+
+   
+        IF current_count IS NOT NULL THEN
+       
+            UPDATE prod_store
+            SET count = current_count - old_quantity + new_quantity
+            WHERE id_store = store_id_to AND id_product_card = product_id;
+
+            IF current_batch_count IS NOT NULL THEN
+               
+                UPDATE prod_store
+                SET count_id_batch =  current_batch_count - old_quantity + new_quantity
+                WHERE id_store = store_id_to AND id_product_card = product_id AND id_batch_number = batch_id;
+            ELSE
+             
+                INSERT INTO prod_store (id_store, id_product_card, id_batch_number, count_id_batch, count)
+                VALUES (store_id_to, product_id, batch_id, quantity,current_count + quantity); 
+            END IF;
+        ELSE
+       
+            INSERT INTO prod_store (id_store, id_product_card, id_batch_number, count_id_batch, count)
+            VALUES (store_id_to, product_id, batch_id, quantity, quantity);
+        END IF;
+
+
+        IF current_count_ IS NOT NULL THEN
+    
+            UPDATE prod_store
+            SET count = current_count_ + old_quantity - new_quantity
+            WHERE id_store = store_id AND id_product_card = product_id;
+
+            IF current_batch_count_ IS NOT NULL THEN
+             
+                UPDATE prod_store
+                SET count_id_batch =  current_batch_count_ + old_quantity - new_quantity
+                WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id;
+   
+             
+            END IF;
+            END IF;
+      
+
+ RETURN NEW;
+    
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_update_prod_store_moving
+AFTER UPDATE ON moving_info
+FOR EACH ROW
+EXECUTE FUNCTION update_prod_store_moving();
+
+----------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION delete_prod_store_moving()
+RETURNS TRIGGER AS $$
+DECLARE
+    store_id INTEGER;
+    product_id INTEGER;
+    batch_id INTEGER;
+     store_id_to INTEGER;
+ old_quantity INTEGER;
+    current_count_ INTEGER;
+    current_batch_count_ INTEGER;
+    current_count INTEGER;
+    current_batch_count INTEGER;
+
+BEGIN
+    
+SELECT id_storehouse_1 INTO store_id
+    FROM moving
+    WHERE id = NEW.invoices_in;
+
+  
+    SELECT id_storehouse_2 INTO store_id_to
+    FROM moving
+    WHERE id = NEW.invoices_in;
+
+
+
+    product_id := NEW.id_Product_card;
+    batch_id := NEW.id_batch_number;
+ 
+    old_quantity := OLD.quantity;
+
+
+    SELECT count INTO current_count
+    FROM prod_store
+    WHERE id_store = store_id_to AND id_product_card = product_id
+    LIMIT 1;
+
+    SELECT count_id_batch INTO current_batch_count
+    FROM prod_store
+    WHERE id_store = store_id_to AND id_product_card = product_id AND id_batch_number = batch_id
+    LIMIT 1;
+
+    SELECT count INTO current_count_
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id
+    LIMIT 1;
+
+  
+    SELECT count_id_batch INTO current_batch_count_
+    FROM prod_store
+    WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id
+    LIMIT 1;
+
+   
+
+        IF current_count IS NOT NULL THEN
+            
+            UPDATE prod_store
+            SET count = current_count - old_quantity
+            WHERE id_store = store_id_to AND id_product_card = product_id;
+
+            IF current_batch_count IS NOT NULL THEN
+          
+                UPDATE prod_store
+                SET count_id_batch =  current_batch_count - old_quantity
+                WHERE id_store = store_id_to AND id_product_card = product_id AND id_batch_number = batch_id;
+            
+            
+            END IF;
+        
+        END IF;
+
+  
+        IF current_count_ IS NOT NULL THEN
+     
+            UPDATE prod_store
+            SET count = current_count_ + old_quantity - new_quantity
+            WHERE id_store = store_id AND id_product_card = product_id;
+
+            IF current_batch_count_ IS NOT NULL THEN
+          
+                UPDATE prod_store
+                SET count_id_batch =  current_batch_count_ + old_quantity - new_quantity
+                WHERE id_store = store_id AND id_product_card = product_id AND id_batch_number = batch_id;
+        
+    END IF;
+  END IF;
+     RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER trg_delete_prod_store_moving
+AFTER DELETE ON moving_info
+FOR EACH ROW
+EXECUTE FUNCTION delete_prod_store_moving();
+------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
